@@ -126,7 +126,7 @@ cp .env.example .env
 ```
 
 | Variable            | Required | Description                                                           |
-| ------------------- | -------- | --------------------------------------------------------------------- |
+| ------------------- | -------- | ----------------------------------------------------------------------|
 | `PORT`              | No       | Server port (default: 3000)                                           |
 | `JWT_SECRET`        | **Yes**  | Secret key for JWT tokens (min 32 characters)                         |
 | `DATABASE_URL`      | **Yes**  | MySQL connection string (format: `mysql://user:pass@host:port/db`)    |
@@ -147,7 +147,7 @@ cp .env.example .env
 ```
 
 | Variable        | Required | Description                                                 |
-| --------------- | -------- | ----------------------------------------------------------- |
+| --------------- | -------- | ------------------------------------------------------------|
 | `VITE_API_BASE` | No       | Backend API base URL (default: `http://localhost:3000/api`) |
 
 ## Installation
@@ -190,8 +190,8 @@ The Prisma schema lives at `backend/prisma/schema.prisma`.
 
 ### Core Models
 
-| Model      | Purpose                                                                |
-| ---------- | ---------------------------------------------------------------------- |
+| Model      | Purpose                                                                 |
+| ---------- | ------------------------------------------------------------------------|
 | `User`     | Stores account credentials (username, email, password, role)           |
 | `Movie`    | Stores movie metadata (title, description, duration, genre, posterUrl) |
 | `Schedule` | Stores a movie showtime, studio, and ticket price                      |
@@ -220,7 +220,7 @@ npm run seed
 The seed script (`backend/prisma/seed.js`) populates the database with realistic test data:
 
 | Entity    | Count | Details                                                                              |
-| --------- | ----- | ------------------------------------------------------------------------------------ |
+| --------- | ----- | -------------------------------------------------------------------------------------|
 | Users     | 56    | 3 admins + 53 regular users (all passwords: `password123`)                           |
 | Movies    | 66    | Across 8 genres: Action, Sci-Fi, Comedy, Drama, Horror, Romance, Animation, Thriller |
 | Schedules | ~120  | 2-3 per movie, varied showtimes, 10 studios, prices from 30,000 to 100,000           |
@@ -229,7 +229,7 @@ The seed script (`backend/prisma/seed.js`) populates the database with realistic
 ### Admin Accounts
 
 | Email                    | Password      |
-| ------------------------ | ------------- |
+| ------------------------ | --------------|
 | `admin@example.com`      | `password123` |
 | `superadmin@example.com` | `password123` |
 | `manager@example.com`    | `password123` |
@@ -237,7 +237,7 @@ The seed script (`backend/prisma/seed.js`) populates the database with realistic
 ### Sample User Accounts
 
 | Email               | Password      |
-| ------------------- | ------------- |
+| ------------------- | --------------|
 | `alice@example.com` | `password123` |
 | `bob@example.com`   | `password123` |
 | `demo@example.com`  | `password123` |
@@ -253,24 +253,24 @@ npm run seed
 
 ### Backend
 
-| Command              | Description                            |
-| -------------------- | -------------------------------------- |
-| `npm run dev`        | Starts the Express server with Nodemon |
-| `npm start`          | Starts the Express server (production) |
-| `npm test`           | Runs unit tests with Vitest            |
-| `npm run test:watch` | Runs unit tests in watch mode          |
-| `npm run seed`       | Seeds the database with initial data   |
+| Command              | Description                             |
+| -------------------- | -----------------------------------------|
+| `npm run dev`        | Starts the Express server with Nodemon  |
+| `npm start`          | Starts the Express server (production)  |
+| `npm test`           | Runs unit tests with Vitest             |
+| `npm run test:watch` | Runs unit tests in watch mode           |
+| `npm run seed`       | Seeds the database with initial data    |
 
 ### Frontend
 
-| Command              | Description                         |
-| -------------------- | ----------------------------------- |
-| `npm run dev`        | Starts the Vite development server  |
-| `npm run build`      | Builds the frontend for production  |
-| `npm run preview`    | Serves the production build locally |
-| `npm run lint`       | Runs ESLint                         |
-| `npm test`           | Runs unit tests with Vitest         |
-| `npm run test:watch` | Runs unit tests in watch mode       |
+| Command              | Description                          |
+| -------------------- | --------------------------------------|
+| `npm run dev`        | Starts the Vite development server   |
+| `npm run build`      | Builds the frontend for production   |
+| `npm run preview`    | Serves the production build locally  |
+| `npm run lint`       | Runs ESLint                          |
+| `npm test`           | Runs unit tests with Vitest          |
+| `npm run test:watch` | Runs unit tests in watch mode        |
 
 ## API
 
@@ -283,7 +283,7 @@ http://localhost:3000
 ### Public Endpoints
 
 | Method | Endpoint                   | Description                                  | Auth |
-| ------ | -------------------------- | -------------------------------------------- | ---- |
+| ------ | --------------------------- | --------------------------------------------- | ---- |
 | `GET`  | `/`                        | Health check                                 | No   |
 | `GET`  | `/health/db`               | Database connection test                     | No   |
 | `GET`  | `/api/movies`              | List all movies with schedules               | No   |
@@ -297,7 +297,7 @@ http://localhost:3000
 ### Authenticated Endpoints
 
 | Method  | Endpoint                   | Description                  | Auth |
-| ------- | -------------------------- | ---------------------------- | ---- |
+| ------- | --------------------------- | ------------------------------| ---- |
 | `GET`   | `/api/users/me`            | Get current user profile     | Yes  |
 | `PATCH` | `/api/users/me`            | Update username and email    | Yes  |
 | `PATCH` | `/api/users/me/password`   | Change password              | Yes  |
@@ -309,7 +309,7 @@ http://localhost:3000
 ### Admin Endpoints
 
 | Method   | Endpoint                   | Description                                    | Auth  |
-| -------- | -------------------------- | ---------------------------------------------- | ----- |
+| -------- | --------------------------- | ------------------------------------------------| ----- |
 | `POST`   | `/api/movies`              | Create a movie                                 | Admin |
 | `PATCH`  | `/api/movies/:id`          | Update a movie                                 | Admin |
 | `DELETE` | `/api/movies/:id`          | Delete a movie                                 | Admin |
