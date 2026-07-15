@@ -319,7 +319,7 @@ The seed script (`backend/prisma/seed.js`) populates the database with realistic
 
 | Entity    | Count | Details                                                                              |
 | --------- | ----- | -------------------------------------------------------------------------------------|
-| Users     | 56    | 3 admins + 53 regular users (all passwords: `password123`)                           |
+| Users     | 56    | 1 admins as default account                                                          |
 | Movies    | 66    | Across 8 genres: Action, Sci-Fi, Comedy, Drama, Horror, Romance, Animation, Thriller |
 | Schedules | ~120  | 2-3 per movie, varied showtimes, 10 studios, prices from 30,000 to 100,000           |
 | Bookings  | ~250  | Mixed statuses: CONFIRMED, CANCELLED, PENDING                                        |
@@ -329,16 +329,14 @@ The seed script (`backend/prisma/seed.js`) populates the database with realistic
 | Email                    | Password      |
 | ------------------------ | --------------|
 | `admin@example.com`      | `password123` |
-| `superadmin@example.com` | `password123` |
-| `manager@example.com`    | `password123` |
+
 
 ### Sample User Accounts
 
 | Email               | Password      |
 | ------------------- | --------------|
 | `alice@example.com` | `password123` |
-| `bob@example.com`   | `password123` |
-| `demo@example.com`  | `password123` |
+
 
 Run the seed script:
 
