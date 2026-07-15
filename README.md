@@ -1,4 +1,20 @@
-# Seat Scheduler Web
+<div align="center">
+
+# 🎬 Seat Scheduler Web
+
+### Full-Stack Movie Booking & Seat Reservation Platform
+
+![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Vite](https://img.shields.io/badge/Vite-Frontend-646CFF?style=for-the-badge&logo=vite&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-5-000000?style=for-the-badge&logo=express&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?style=for-the-badge&logo=prisma&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-MariaDB-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![License](https://img.shields.io/badge/License-See%20LICENSE-green?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Production--Ready-success?style=for-the-badge)
+
+</div>
 
 A full-stack movie booking application for scheduling showtimes and managing seat reservations.
 
@@ -25,6 +41,88 @@ Production-ready with the following features:
 | Auth        | JWT (jsonwebtoken), bcrypt                              |
 | Testing     | Vitest, React Testing Library                           |
 | Development | Nodemon, ESLint                                         |
+
+## 🧠 System Flow
+
+### Arsitektur Umum
+
+```mermaid
+flowchart LR
+    subgraph Client["🖥️ Frontend (React + Vite)"]
+        A[Pages & Components]
+        B[Auth Context]
+        C[API Client]
+    end
+
+    subgraph Server["⚙️ Backend (Express 5)"]
+        D[Routes]
+        E[Middlewares\nJWT Auth]
+        F[Controllers]
+        G[Models]
+    end
+
+    subgraph DB["🗄️ Database"]
+        H[(MySQL / MariaDB)]
+    end
+
+    A --> C
+    B --> C
+    C -- HTTP/JSON --> D
+    D --> E
+    E --> F
+    F --> G
+    G -- Prisma ORM --> H
+```
+
+### Alur Autentikasi & Booking Kursi
+
+```mermaid
+sequenceDiagram
+    participant U as 👤 User
+    participant FE as 🖥️ Frontend
+    participant BE as ⚙️ Backend API
+    participant DB as 🗄️ Database
+
+    U->>FE: Login (email & password)
+    FE->>BE: POST /api/users/login
+    BE->>DB: Verifikasi kredensial
+    DB-->>BE: Data user valid
+    BE-->>FE: JWT Token
+    FE-->>U: Redirect ke Home
+
+    U->>FE: Pilih film & jadwal
+    FE->>BE: GET /api/schedules/:id/seats
+    BE->>DB: Ambil status kursi
+    DB-->>BE: Daftar kursi tersedia
+    BE-->>FE: Data kursi
+
+    U->>FE: Pilih kursi & konfirmasi
+    FE->>BE: POST /api/bookings (dengan JWT)
+    BE->>BE: Validasi token (authMiddleware)
+    BE->>DB: Simpan booking baru
+    DB-->>BE: Booking berhasil
+    BE-->>FE: Status CONFIRMED
+    FE-->>U: Tampilkan halaman konfirmasi
+```
+
+### Alur Peran Pengguna (User Role Flow)
+
+```mermaid
+flowchart TD
+    A([Pengguna Mengakses Aplikasi]) --> B{Sudah Login?}
+    B -- Belum --> C[Halaman Login/Register]
+    C --> B
+    B -- Sudah --> D{Role Pengguna}
+
+    D -- USER --> E[Browse Film & Jadwal]
+    E --> F[Pilih Kursi & Booking]
+    F --> G[Kelola Profil & Riwayat Booking]
+
+    D -- ADMIN --> H[Akses Admin Dashboard]
+    H --> I[Kelola Film]
+    H --> J[Kelola Jadwal]
+    H --> K[Kelola & Pantau Semua Booking]
+```
 
 ## Project Structure
 
@@ -355,3 +453,16 @@ npm run deploy
 ## License
 
 This project is licensed under the terms in [LICENSE](./LICENSE).
+
+---
+
+<div align="center">
+
+## 👤 Author
+
+**Mardiansyah**
+Program Studi Teknik Informatika — Universitas Teknologi Bandung
+
+⭐ *Jika proyek ini bermanfaat, jangan lupa beri bintang pada repository ini!* ⭐
+
+</div>
